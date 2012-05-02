@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Module xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300" creationComplete="onCreationComplete(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import robotlegs.bender.bundles.mvcs.MVCSBundle;
+			import robotlegs.bender.extensions.scopedEventDispatcher.ScopedEventDispatcherExtension;
+			import robotlegs.bender.framework.api.IContext;
+			import robotlegs.bender.framework.impl.Context;
+			
+			import uk.co.dilkusha.module.config.ColourChangingModuleConfig;
+			import uk.co.dilkusha.module.view.ColourChangingRectangle;
+			
+			private var _context:IContext;
+			
+			
+			public function addView():void {
+				var colourChangingRectangle:ColourChangingRectangle = new ColourChangingRectangle();
+				addElement(colourChangingRectangle);
+			}
+			
+			protected function onCreationComplete(event:FlexEvent):void
+			{
+				_context = new Context()
+					.extend(MVCSBundle)
+					.extend(ScopedEventDispatcherExtension)
+					.configure(ColourChangingModuleConfig, this);
+				addView();
+			}
+			
+		]]>
+	</fx:Script>
+</s:Module>

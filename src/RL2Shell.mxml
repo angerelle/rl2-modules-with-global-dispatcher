@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:mxml="robotlegs.bender.mxml.*" xmlns:mvcs="robotlegs.bender.bundles.mvcs.*" xmlns:config="uk.co.dilkusha.shell.config.*" xmlns:view="uk.co.dilkusha.shell.view.*" xmlns:scopedEventDispatcher="robotlegs.bender.extensions.scopedEventDispatcher.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.core.IVisualElement;
+			import mx.events.ModuleEvent;
+			import mx.modules.IModuleInfo;
+			import mx.modules.ModuleManager;
+			
+			private var moduleInfo:IModuleInfo;
+			
+			protected function onModuleLoadRequested(event:MouseEvent):void {
+				moduleInfo = ModuleManager.getModule("uk/co/dilkusha/module/ColourChangingModule.swf");
+				moduleInfo.addEventListener(ModuleEvent.READY, onModuleReady);
+				moduleInfo.addEventListener(ModuleEvent.ERROR, onModuleError);
+				moduleInfo.load(null, null, null, moduleFactory);
+			}
+			
+			protected function onModuleReady(event:ModuleEvent):void {
+				removeEventListeners(event.currentTarget as IEventDispatcher);
+				loadModuleButton.visible = false;
+				var elementToAdd:IVisualElement = (event.currentTarget as IModuleInfo).factory.create() as IVisualElement;
+				addElement(elementToAdd);
+			}
+			
+			protected function onModuleError(event:ModuleEvent):void {
+				removeEventListeners(event.currentTarget as IEventDispatcher);
+				Alert.show("Problem loading module");
+			}
+			
+			private function removeEventListeners(eventDispatcher:IEventDispatcher):void {
+				eventDispatcher.removeEventListener(ModuleEvent.READY, onModuleReady);
+				eventDispatcher.removeEventListener(ModuleEvent.READY, onModuleError);
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mxml:ContextBuilderTag>
+			<mvcs:MVCSBundle/>
+			<!-- add ScopedEventDispatcherExtension so that the shell and module have a shared event dispatcher -->
+			<scopedEventDispatcher:ScopedEventDispatcherExtension/>
+			<config:RL2ShellConfig/>
+		</mxml:ContextBuilderTag>
+	</fx:Declarations>
+	
+	<s:layout>
+		<s:HorizontalLayout/>
+	</s:layout>
+	<view:ColourPicker/>
+	<s:Button id="loadModuleButton" label="Load module" click="onModuleLoadRequested(event)"/>
+</s:Application>
