@@ -24,6 +24,8 @@
 			
 			protected function onCreationComplete(event:FlexEvent):void
 			{
+				// Add ScopedEventDispatcherExtension so that the module and shell have a shared
+				// event dispatcher
 				_context = new Context()
 					.extend(MVCSBundle)
 					.extend(ScopedEventDispatcherExtension)
