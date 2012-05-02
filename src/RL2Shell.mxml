@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
-			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:mxml="robotlegs.bender.mxml.*" xmlns:mvcs="robotlegs.bender.bundles.mvcs.*" xmlns:config="uk.co.dilkusha.shell.config.*" xmlns:view="uk.co.dilkusha.shell.view.*" xmlns:scopedEventDispatcher="robotlegs.bender.extensions.scopedEventDispatcher.*">
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:mxml="robotlegs.bender.mxml.*"
+			   xmlns:mvcs="robotlegs.bender.bundles.mvcs.*"
+			   xmlns:config="uk.co.dilkusha.shell.config.*"
+			   xmlns:view="uk.co.dilkusha.shell.view.*"
+			   xmlns:scopedEventDispatcher="robotlegs.bender.extensions.scopedEventDispatcher.*"
+			   minWidth="955" minHeight="600" viewSourceURL="srcview/index.html">
 	
 	<fx:Script>
 		<![CDATA[
