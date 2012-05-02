@@ -15,24 +15,21 @@ package uk.co.dilkusha.module
 		
 		private var _context:IContext;
 		
-		public function addView():void {
+		override protected function createChildren():void {
+			super.createChildren();
 			var colourChangingRectangle:ColourChangingRectangle = new ColourChangingRectangle();
 			addElement(colourChangingRectangle);
+
 		}
-		
+
 		public function ColourChangingModule()
 		{
 			super();
 			// Add ScopedEventDispatcherExtension so that the module and shell have a shared
 			// event dispatcher
 			_context = new Context().extend(MVCSBundle)
-				.extend(ScopedEventDispatcherExtension);
-			
-			// Wait until context has been initialised before adding the view, 
-			// otherwise it won't get mediated
-			_context.lifecycle.afterInitializing(addView);
-			
-			_context.configure(ColourChangingModuleConfig, this);
+				.extend(ScopedEventDispatcherExtension)
+				.configure(ColourChangingModuleConfig, this);
 			
 		}
 	}
