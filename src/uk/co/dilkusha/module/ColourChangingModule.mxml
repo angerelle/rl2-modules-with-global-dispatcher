@@ -26,13 +26,14 @@
 			{
 				// Add ScopedEventDispatcherExtension so that the module and shell have a shared
 				// event dispatcher
-				_context = new Context();
+				_context = new Context().extend(MVCSBundle)
+					.extend(ScopedEventDispatcherExtension);
 				
-				// Wait until context has been initialised before adding the view, otherwise it won't get mediated
+				// Wait until context has been initialised before adding the view, 
+				// otherwise it won't get mediated
 				_context.lifecycle.afterInitializing(addView);
-				_context.extend(MVCSBundle)
-					.extend(ScopedEventDispatcherExtension)
-					.configure(ColourChangingModuleConfig, this);
+				
+				_context.configure(ColourChangingModuleConfig, this);
 			}
 			
 		]]>
