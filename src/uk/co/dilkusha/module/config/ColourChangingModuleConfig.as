@@ -1,10 +1,7 @@
 package uk.co.dilkusha.module.config
 {
-	import flash.display.DisplayObjectContainer;
-	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	
-	import uk.co.dilkusha.module.ColourChangingModule;
 	import uk.co.dilkusha.module.view.ColourChangingRectangle;
 	import uk.co.dilkusha.module.view.ColourChangingRectangleMediator;
 
