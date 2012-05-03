@@ -1,1 +1,1 @@
-The robotleg-framework swc is built from source pulled down from https://github.com/robotlegs/robotlegs-framework 2/5/2012 (commit 147c2ad130769554201b76f3ba99ffc2efbb4e44)
+This project needs to be built against the source for the RL2 beta pulled down from https://github.com/darscan/robotlegs-framework 
