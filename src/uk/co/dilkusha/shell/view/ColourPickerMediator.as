@@ -1,7 +1,5 @@
 package uk.co.dilkusha.shell.view
 {
-	import flash.events.IEventDispatcher;
-	
 	import mx.events.ColorPickerEvent;
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
@@ -10,9 +8,7 @@ package uk.co.dilkusha.shell.view
 	
 	public class ColourPickerMediator extends Mediator
 	{
-		[Inject(name="global")]
-		public var globalDispatcher:IEventDispatcher;
-		
+
 		public function ColourPickerMediator()
 		{
 			super();
@@ -23,7 +19,7 @@ package uk.co.dilkusha.shell.view
 		}
 		
 		private function onColourChange(event:ColorPickerEvent):void {
-			globalDispatcher.dispatchEvent(new ColourChangeRequestEvent(ColourChangeRequestEvent.COLOUR_CHANGE_REQUEST,
+			dispatch(new ColourChangeRequestEvent(ColourChangeRequestEvent.COLOUR_CHANGE_REQUEST,
 				event.color));
 		}
 
